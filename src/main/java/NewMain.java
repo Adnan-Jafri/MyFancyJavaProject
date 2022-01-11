@@ -1,11 +1,35 @@
-
-public class NewMain {
-
+class InstanceClass {
+    private static InstanceClass instance = null;
     
-    public static void main(String[] args) {
-        String name = "Adnan Jafri";
-        String id = "011172184";
+    private InstanceClass(String name, String id) {
+        User user = new User(name, id);
+    }
+    
+    public static InstanceClass getInstanceClass(String name, String id) {
+        if(instance == null) {
+            instance = new InstanceClass(name, id);
+        }
+        return instance;
+    }
+}
 
-        System.out.print("Name: "+name+"\nID: "+id);
+class User {
+    String name;
+    String id;
+    
+    public User(String name, String id) {
+        super();
+        this.name = name;
+        this.id = id;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        String name = "Tanim Kabir";
+       String id = "011172101";
+       
+       InstanceClass student = InstanceClass.getInstanceClass(name, id);
     }
 }
